@@ -1,0 +1,227 @@
+/* Components, Gauges, Bloch Sphere & Telemetry Panels */
+
+/* Metrics Overview Dashboard Top Bar */
+.metrics-banner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px 1rem;
+  background: rgba(8, 11, 20, 0.8);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-header {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.metric-value-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.metric-val {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--cyan-glow);
+}
+
+.metric-unit {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-left: 2px;
+}
+
+/* Protocol Control Bar */
+.protocol-runner-panel {
+  background: rgba(10, 14, 26, 0.95);
+  border-top: 1px solid var(--border-light);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.protocol-stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.step-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-light);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.step-pill.active {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: var(--cyan-glow);
+  color: var(--cyan-glow);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+}
+
+.step-pill.completed {
+  background: rgba(0, 255, 136, 0.1);
+  border-color: var(--green-glow);
+  color: var(--green-glow);
+}
+
+/* Bloch Sphere Canvas Container */
+.bloch-container {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#blochCanvas {
+  width: 100%;
+  height: 100%;
+}
+
+.bloch-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.gate-btn {
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--cyan-glow);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.gate-btn:hover {
+  background: rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.gate-btn.purple {
+  background: rgba(138, 43, 226, 0.15);
+  border-color: rgba(138, 43, 226, 0.4);
+  color: var(--purple-glow);
+}
+.gate-btn.purple:hover { background: rgba(138, 43, 226, 0.35); }
+
+/* Live Event Logger Terminal */
+.log-terminal {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  height: 160px;
+  overflow-y: auto;
+  padding: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.log-entry {
+  margin-bottom: 4px;
+  line-height: 1.4;
+  display: flex;
+  gap: 8px;
+}
+
+.log-time {
+  color: var(--text-dim);
+}
+
+.log-msg {
+  color: var(--text-main);
+}
+.log-msg.info { color: var(--cyan-glow); }
+.log-msg.success { color: var(--green-glow); }
+.log-msg.warning { color: var(--amber-glow); }
+.log-msg.danger { color: var(--red-glow); }
+
+/* Key Bit Table (BB84 Sifting) */
+.bits-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-height: 100px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.bit-item {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+}
+
+.bit-item.match {
+  background: rgba(0, 255, 136, 0.2);
+  border-color: var(--green-glow);
+  color: var(--green-glow);
+}
+
+.bit-item.error {
+  background: rgba(255, 51, 102, 0.2);
+  border-color: var(--red-glow);
+  color: var(--red-glow);
+}
+
+.bit-item.discarded {
+  opacity: 0.3;
+  text-decoration: line-through;
+}
+
+/* Charts Container */
+.chart-card {
+  height: 180px;
+  position: relative;
+  margin-bottom: 12px;
+}

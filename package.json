@@ -1,0 +1,9 @@
+{
+  "name": "quantum-internet-simulator",
+  "version": "1.0.0",
+  "description": "Interactive Quantum Network Simulator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

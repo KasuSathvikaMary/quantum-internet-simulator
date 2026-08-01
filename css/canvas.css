@@ -1,0 +1,183 @@
+/* Canvas & Interactive Network Topology Styling */
+
+.canvas-container {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at center, rgba(16, 26, 50, 0.4) 0%, rgba(8, 11, 20, 0.95) 100%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  overflow: hidden;
+  cursor: default;
+}
+
+#networkCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Floating Overlay Toolbar on Canvas */
+.canvas-toolbar {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  backdrop-filter: var(--glass-backdrop);
+  padding: 6px 12px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
+
+.tool-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tool-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+}
+
+.tool-btn.active {
+  background: rgba(0, 240, 255, 0.2);
+  color: var(--cyan-glow);
+  border-color: var(--cyan-glow);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-light);
+}
+
+/* Node Palette Items in Left Sidebar */
+.node-palette-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  cursor: grab;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.node-palette-item:hover {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.3);
+  transform: translateX(4px);
+}
+
+.node-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.icon-endnode { background: rgba(0, 240, 255, 0.2); color: var(--cyan-glow); border: 1px solid var(--cyan-glow); }
+.icon-repeater { background: rgba(138, 43, 226, 0.2); color: var(--purple-glow); border: 1px solid var(--purple-glow); }
+.icon-router { background: rgba(0, 255, 136, 0.2); color: var(--green-glow); border: 1px solid var(--green-glow); }
+.icon-satellite { background: rgba(255, 170, 0, 0.2); color: var(--amber-glow); border: 1px solid var(--amber-glow); }
+.icon-eve { background: rgba(255, 51, 102, 0.2); color: var(--red-glow); border: 1px solid var(--red-glow); }
+
+.node-palette-info h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.node-palette-info p {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* Preset Cards */
+.preset-card {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.preset-card:hover {
+  background: rgba(138, 43, 226, 0.1);
+  border-color: rgba(138, 43, 226, 0.4);
+}
+
+.preset-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.preset-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* Hover / Context Info Popup on Canvas */
+.canvas-popover {
+  position: absolute;
+  background: var(--bg-card);
+  border: 1px solid var(--cyan-glow);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  backdrop-filter: var(--glass-backdrop);
+  z-index: 30;
+  min-width: 200px;
+  pointer-events: none;
+}
+
+.popover-header {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cyan-glow);
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.popover-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  margin-bottom: 4px;
+}
+
+.popover-label { color: var(--text-muted); }
+.popover-val { font-family: var(--font-mono); color: var(--text-main); }

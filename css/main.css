@@ -1,0 +1,327 @@
+/* QuantumNet Studio - Design System & Main Layout */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Color Palette - Quantum Neon Theme */
+  --bg-dark: #080b14;
+  --bg-card: rgba(16, 22, 38, 0.75);
+  --bg-card-hover: rgba(25, 34, 58, 0.85);
+  --bg-sidebar: rgba(10, 14, 26, 0.85);
+  --border-glow: rgba(0, 229, 255, 0.25);
+  --border-light: rgba(255, 255, 255, 0.08);
+  
+  /* Primary & Accent Colors */
+  --cyan-glow: #00f0ff;
+  --magenta-glow: #ff00a0;
+  --purple-glow: #8a2be2;
+  --green-glow: #00ff88;
+  --amber-glow: #ffaa00;
+  --red-glow: #ff3366;
+  
+  /* Text Colors */
+  --text-main: #f0f4f9;
+  --text-muted: #8e9bb0;
+  --text-dim: #505c73;
+
+  /* Typography */
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing & Borders */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --glass-backdrop: blur(16px) saturate(180%);
+  --shadow-glow: 0 0 25px rgba(0, 240, 255, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(255, 0, 160, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.03) 0%, transparent 60%);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Navbar */
+.navbar {
+  height: 60px;
+  padding: 0 1.5rem;
+  background: var(--bg-sidebar);
+  border-bottom: 1px solid var(--border-light);
+  backdrop-filter: var(--glass-backdrop);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+  font-size: 1.1rem;
+}
+
+.brand-title span {
+  background: linear-gradient(90deg, var(--cyan-glow), var(--magenta-glow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--cyan-glow);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: var(--cyan-glow);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+  color: #fff;
+}
+
+.nav-btn.primary {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(138, 43, 226, 0.3));
+  border: 1px solid var(--cyan-glow);
+  color: var(--cyan-glow);
+}
+
+.nav-btn.primary:hover {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.4), rgba(138, 43, 226, 0.5));
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+/* App Main Container */
+.app-container {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Left Sidebar - Node Toolbar & Presets */
+.sidebar-left {
+  width: 280px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-light);
+  backdrop-filter: var(--glass-backdrop);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  overflow-y: auto;
+}
+
+/* Right Sidebar - Analytics, Telemetry & Bloch Sphere */
+.sidebar-right {
+  width: 360px;
+  background: var(--bg-sidebar);
+  border-left: 1px solid var(--border-light);
+  backdrop-filter: var(--glass-backdrop);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  overflow-y: auto;
+}
+
+/* Main Workspace */
+.workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Section Header */
+.sidebar-section {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Cards & Containers */
+.glass-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  backdrop-filter: var(--glass-backdrop);
+  transition: all 0.2s ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+/* Tabs UI */
+.tab-group {
+  display: flex;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  margin-bottom: 1rem;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.tab-btn.active {
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--cyan-glow);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+/* Form Controls */
+.control-group {
+  margin-bottom: 0.85rem;
+}
+
+.control-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.control-value {
+  color: var(--cyan-glow);
+  font-family: var(--font-mono);
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--cyan-glow);
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+select, input[type="text"] {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  outline: none;
+}
+
+select:focus, input[type="text"]:focus {
+  border-color: var(--cyan-glow);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+/* Status Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+.badge-green { background: rgba(0, 255, 136, 0.15); color: var(--green-glow); border: 1px solid rgba(0, 255, 136, 0.3); }
+.badge-cyan { background: rgba(0, 240, 255, 0.15); color: var(--cyan-glow); border: 1px solid rgba(0, 240, 255, 0.3); }
+.badge-magenta { background: rgba(255, 0, 160, 0.15); color: var(--magenta-glow); border: 1px solid rgba(255, 0, 160, 0.3); }
+.badge-amber { background: rgba(255, 170, 0, 0.15); color: var(--amber-glow); border: 1px solid rgba(255, 170, 0, 0.3); }
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyan-glow);
+}
